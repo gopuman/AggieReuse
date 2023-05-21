@@ -1,12 +1,70 @@
-# Aggie Reuse
+# Getting Started with Create React App
 
-Aggie Reuse is an inventory management app designed for the Aggie Reuse store. It provides information about the clothes received by the store and helps track customer traffic at different times and days. This README file provides an overview of the app's features and the technologies used. This is the project submission of Gopal, Rohith and Shreyas for HackDavis 2023.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Technologies Used
+## Available Scripts
 
-The following technologies are used in Aggie Reuse:
+In the project directory, you can run:
 
-[![React](https://img.shields.io/badge/-React-blue)](https://reactjs.org/) [![Node.js](https://img.shields.io/badge/-Node.js-green)](https://nodejs.org/) [![JavaScript](https://img.shields.io/badge/-JavaScript-yellow)](https://developer.mozilla.org/en-US/docs/Web/JavaScript) [![Microsoft Azure](https://img.shields.io/badge/-Microsoft%20Azure-blue)](https://azure.microsoft.com/) [![Cosmos DB](https://img.shields.io/badge/-Cosmos%20DB-purple)](https://azure.microsoft.com/services/cosmos-db/) [![Python](https://img.shields.io/badge/-Python-blue)](https://www.python.org/) [![Grafana](https://img.shields.io/badge/-Grafana-orange)](https://grafana.com/) [![OpenCV](https://img.shields.io/badge/-OpenCV-green)](https://opencv.org/)
+### `npm start`
 
-## Customer Traffic Counter
-This module focuses on keeping track of students/customers and monitoring the store's foot traffic. An overhead camera records the video of people entering and exiting the store. Leveraging Machine Learning and Image Processing Techniques, the module accurately detects people and determines their direction of movement (entry or exit) - counting the number of people entering the store and the number of people exiting the store.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
