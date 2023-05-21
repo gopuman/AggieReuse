@@ -1,17 +1,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent, Typography, TextField, Button, Grid } from '@material-ui/core';
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#023366',
-    },
-    secondary: {
-      main: '#c7972b',
-    },
-  },
-});
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +14,8 @@ const useStyles = makeStyles((theme) => ({
   card: {
     width: '300px',
     boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.1)',
+    background: 'rgba(255, 255, 255, 0.3)',
+    backdropFilter: 'blur(10px)',
   },
   cardContent: {
     display: 'flex',
@@ -67,6 +59,8 @@ const LoginSignUpPage = () => {
     });
   };
 
+  const navigate = useNavigate();
+
   const handleLoginSubmit = (e) => {
     e.preventDefault();
 
@@ -74,6 +68,7 @@ const LoginSignUpPage = () => {
       try {
         const response = await fetch('http://localhost:3001/login', {
           method: 'POST',
+          'credentials': 'include',
           headers: {
             'Content-Type': 'application/json',
           },
@@ -81,7 +76,7 @@ const LoginSignUpPage = () => {
         });
   
         if (response.ok) {
-          // Handle successful login
+          navigate("/");
           console.log('Login successful');
         } else {
           // Handle login failure
@@ -100,6 +95,7 @@ const LoginSignUpPage = () => {
       try {
         const response = await fetch('http://localhost:3001/signup', {
           method: 'POST',
+          'credentials': 'include',
           headers: {
             'Content-Type': 'application/json',
           },

@@ -1,8 +1,21 @@
+import session from 'express-session'
+import cookieParser from 'cookie-parser'
+
 const express = require('express');
 const { CosmosClient } = require('@azure/cosmos');
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
+app.use(session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: false,
+        maxAge: 1000 * 60 * 60 * 24
+    }
+}))
 
 const cosmosEndpoint = 'https://c.hackdavis.postgres.database.azure.com:5432';
 const cosmosKey = 'hackdavis123$';
@@ -28,6 +41,7 @@ app.post('/signup', async (req, res) => {
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
+    console.log("Hi");
     const querySpec = {
       query: 'SELECT * FROM c WHERE c.email = @email AND c.password = @password',
       parameters: [
@@ -38,6 +52,9 @@ app.post('/login', async (req, res) => {
 
     const { resources } = await container.items.query(querySpec).fetchAll();
     if (resources.length > 0) {
+      req.session.username = resources[0].username;
+      console.log("Hi");
+      console.log(req.session.username);
       res.json({ success: true });
     } else {
       res.status(401).json({ error: 'Invalid credentials' });

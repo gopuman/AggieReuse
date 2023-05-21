@@ -1,17 +1,55 @@
+import express from 'express'
+import session from 'express-session'
+import cookieParser from 'cookie-parser'
+import { pool } from './db/citus.js'
+import cors from 'cors'
 
-const express = require('express')
-const app = express()
+const app = express();
 const port = 3001
 
-const { pool } = require("./db/citus");
-
 app.use(express.json())
+app.use(cors({
+    origin: ['http://localhost:3000'],
+    methods: ["POST","GET"],
+    credentials: true
+}));
 app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers');
   next();
 });
+app.use(cookieParser());
+app.use(session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: false,
+        maxAge: 1000 * 60 * 60 * 24
+    }
+}));
+
+app.get('/inventory', async (req,res) => {
+    const query = "SELECT * FROM inventory";
+    try {
+        const queryResult = await pool.query(query);
+        if (queryResult.rowCount > 0) {
+            res.status(200).json({ data:queryResult });
+        }
+    } catch(err) {
+        console.log(err.stack);
+        res.status(500).json({ message: 'An error occurred' });
+    }
+})
+
+app.get('/', (req,res) => {
+    if(req.session.username) {
+        return res.json({valid: true, username: req.session.username})
+    } else {
+        return res.json({valid:false})
+    }
+})
 
 app.post('/signup', async (req, res) => {
     const { email, password } = req.body;
@@ -54,7 +92,11 @@ app.post('/login', async (req, res) => {
       
       if (result.rowCount > 0) {
         // Login successful
-        res.status(200).json({ message: 'Login successful' });
+        //Debug:
+        //console.log(result.rows[0].username)
+
+        req.session.username = result.rows[0].username
+        res.status(200).json({ message: 'Login successful'});
       } else {
         // Login failed
         res.status(401).json({ message: 'Invalid email or password' });
@@ -64,7 +106,7 @@ app.post('/login', async (req, res) => {
       res.status(500).json({ message: 'An error occurred' });
     }
   });
-  
+
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
 })
