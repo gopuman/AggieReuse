@@ -7,6 +7,18 @@ import LoginSignUpPage from './components/Login'
 import { useState, useEffect } from 'react';
 import Home from './components/Home';
 
+const MyButton = ({ name, url }) => {
+  const handleClick = () => {
+    window.open(url, '_blank');
+  };
+
+  return (
+    <Button onClick={handleClick} color='inherit'>
+      {name}
+    </Button>
+  );
+};
+
 const containerStyle= {
   // width: '100vw',
   // height: '100vh',
@@ -79,8 +91,11 @@ const App = () => {
                   <Button onClick = {(e) => eventHandler(e)} element={Link} href="/register" color="inherit">
                   {name ? name : 'Login'}
                   </Button>
+                  <MyButton name="DASHBOARD" url="http://localhost:3000/goto/iSKZtmw4g?orgId=1"/>
+                  <MyButton name="CROWD TRACKING" url="https://drive.google.com/file/d/1kH3XMbTdQYdpN1qRYLkrn5oGPm3aSZZT/view?usp=share_link"/>
               </Toolbar>
               </AppBar>
+              {/* <InvTable/> */}
   
               <Routes>
               <Route exact path="/" element={<Home />} />

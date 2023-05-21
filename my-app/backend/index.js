@@ -9,7 +9,7 @@ const port = 3001
 
 app.use(express.json())
 app.use(cors({
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:3006'],
     methods: ["POST","GET"],
     credentials: true
 }));
@@ -106,6 +106,17 @@ app.post('/login', async (req, res) => {
       res.status(500).json({ message: 'An error occurred' });
     }
   });
+
+app.get('/invtable', (req, res) => {
+  pool.query('SELECT * FROM inventory', (err, result) => {
+    if (err) {
+      console.error('Error executing query', err);
+      res.status(500).send('Error retrieving data from database');
+    } else {
+      res.json(result.rows);
+    }
+  });
+});
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)

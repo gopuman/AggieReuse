@@ -1,17 +1,13 @@
-const { Pool } = require('pg');
+import pkg from 'pg';
+const { Pool } = pkg;
 
-const pool = new Pool({
+export const pool = new Pool({
   max: 300,
   connectionTimeoutMillis: 5000,
-
-  host: 'c.hackdavis.postgres.database.azure.com',
+  host: '',
   port: 5432,
-  user: '',
+  user: 'citus',
   password: '',
-  database: '',
+  database: 'citus',
   ssl: true,
 });
-
-module.exports = {
-    pool
-};
