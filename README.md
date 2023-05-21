@@ -1,6 +1,6 @@
 # Aggie Reuse
 
-Aggie Reuse is an inventory management app designed for a reuse store. It provides information about the clothes received by the store and helps track customer traffic at different times and days. This README file provides an overview of the app's features and the technologies used.
+Aggie Reuse is an inventory management app designed for the Aggie Reuse store. It provides information about the clothes received by the store and helps track customer traffic at different times and days. This README file provides an overview of the app's features and the technologies used. This is the project submission of Gopal, Rohith and Shreyas for HackDavis 2023.
 
 ## Technologies Used
 
