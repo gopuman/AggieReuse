@@ -6,9 +6,9 @@ const pool = new Pool({
 
   host: 'c.hackdavis.postgres.database.azure.com',
   port: 5432,
-  user: 'citus',
-  password: 'hackdavis123$',
-  database: 'citus',
+  user: '',
+  password: '',
+  database: '',
   ssl: true,
 });
 
